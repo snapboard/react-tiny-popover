@@ -141,7 +141,7 @@ var Popover = /** @class */ (function (_super) {
         this.renderWithPosition({ position: this.positionOrder[positionIndex], targetRect: this.target.getBoundingClientRect() }, function (violation, rect) {
             var _a;
             var _b = _this.props, disableReposition = _b.disableReposition, contentLocation = _b.contentLocation, shouldIgnoreViolation = _b.shouldIgnoreViolation;
-            if ((!shouldIgnoreViolation && violation) && !disableReposition && !(typeof contentLocation === 'object')) {
+            if (violation && (!shouldIgnoreViolation || positionIndex < _this.positionOrder.length - 1) && !disableReposition && !(typeof contentLocation === 'object')) {
                 _this.renderPopover(positionIndex + 1);
             }
             else {

@@ -143,8 +143,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
 
         this.renderWithPosition({ position: this.positionOrder[positionIndex], targetRect: this.target.getBoundingClientRect() }, (violation, rect) => {
             const { disableReposition, contentLocation, shouldIgnoreViolation } = this.props;
-
-            if ((!shouldIgnoreViolation && violation) && !disableReposition && !(typeof contentLocation === 'object')) {
+            if (violation && (!shouldIgnoreViolation || positionIndex < this.positionOrder.length - 1) && !disableReposition && !(typeof contentLocation === 'object')) {
                 this.renderPopover(positionIndex + 1);
             } else {
                 const { contentLocation, align } = this.props;
